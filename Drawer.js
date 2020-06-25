@@ -1,7 +1,7 @@
 import React, { Component } from 'react';  
 import { View, Text, StyleSheet, Button } from 'react-native';  
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import Home_ from 'Home.js';
+import Home_ from './Home_.js';
 import {  
     createSwitchNavigator,  
     createAppContainer,  

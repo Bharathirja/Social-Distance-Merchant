@@ -34,6 +34,7 @@ class Home_ extends React.Component {
 						<View>
 							<Text>{u.Name}</Text>
 							<Text>{u.Time}</Text>
+                            </View>
 						<View>
 						<View style={{flex:1,flexdirection:row}} >
 							<Touchableobacity>
@@ -44,6 +45,7 @@ class Home_ extends React.Component {
 							</Touchableobacity>
 						</View>
 	                                </View>
+                                    </View>
 	                        );
 	                })
 	        }
@@ -90,6 +92,7 @@ class Scheduled extends React.Component {
 						<View>
 							<Text>{u.Name}</Text>
 							<Text>{u.Time}</Text>
+                            </View>
 						<View>
 						<View style={{flex:1,flexdirection:row}} >
 							<Touchableobacity>
@@ -100,6 +103,7 @@ class Scheduled extends React.Component {
 							</Touchableobacity>
 						</View>
 	                                </View>
+                                    </View>
 	                        );
 	                })
 	        }
