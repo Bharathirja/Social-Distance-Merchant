@@ -147,7 +147,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
             }  
         },  
         Scheduled: {  
-            screen: Cart,  
+            // screen: Cart,  
             navigationOptions:{  
                 tabBarLabel:'Cart',  
                 tabBarIcon: ({ tintColor }) => (  
