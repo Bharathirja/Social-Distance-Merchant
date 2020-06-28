@@ -1,12 +1,30 @@
+
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function ProfileDetails() {
+  return (
+    <View>
+      <Text>Hello Profile</Text>
+    </View>
+  )
+}
 
 export default function ProfileScreen() {
     return (
-      <View>
-        <Text style={{textAlign: 'center', marginTop: 300}}>
-          Welcome to Profile page!
-        </Text>
-      </View>
+      <Stack.Navigator>
+        <Stack.Screen name="Profile" component={ProfileDetails}  options={{
+        headerStyle: {
+          backgroundColor: 'tomato',
+          
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        }}}/>
+      </Stack.Navigator>
     );
   }
