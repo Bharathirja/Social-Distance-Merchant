@@ -28,7 +28,7 @@ export default class TabADetailsScreen extends Component {
     };
   }
 
-  clickEventListener = (item) => {
+  clickEventListener = (item,navigation) => {
     Alert.alert('Message', 'Item clicked. '+item.name);
   }
 
@@ -42,14 +42,14 @@ export default class TabADetailsScreen extends Component {
           keyExtractor= {(item) => {
             return item.id;
           }}
-          renderItem={({item}) => {
+          renderItem={({item,navigation}) => {
           return (
             <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
               <Image style={styles.image} source={{uri: item.image}}/>
               <View style={styles.cardContent}>
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.time}>Time:{item.time}</Text>
-                <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                <TouchableOpacity style={styles.followButton}  onPress = {()=>this.props.navigation.navigate('Bookings')}>
                   <Text style={styles.followButtonText}>View more</Text>  
                 </TouchableOpacity>
               </View>

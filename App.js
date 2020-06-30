@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ProfileScreen from './Screens/profile.js';
 import HomeScreen from './Screens/home.js';
 import AllocatedScreen from './Screens/allocated.js';
+import AboutScreen from './Screens/about.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +54,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Bookings" component={AllocatedScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="About" component={ProfileScreen} />
+        <Tab.Screen name="About" component={AboutScreen} />
 
     </Tab.Navigator>
     </NavigationContainer>

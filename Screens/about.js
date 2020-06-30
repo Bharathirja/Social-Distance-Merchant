@@ -1,81 +1,133 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity, } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native';
 
-export default class App extends React.Component {  
-	constructor(){
-		super();
-		this.state={
-			About_us:"ssdfkskkdjksjsjkdskjfdaksijkllskdjksldkaldkjadksjdkljewiutoipwrufjsk;djgjskdfoieruopisjdkchdkjv;czxvkldsjfoiupirupoeirutpiosdfjkg;cdkjhs;kjdhfgskjhdfjgsh;dirupsoeruij;lfkdsj;lvkdjg;lksdf;gsjroiuepoiturpwoiutrpojs;lkfjglskjdfl;ksjlkdfjl;skjdflkfjlksjdl;kfj;lksjdlf;kjs;klfj;lgskjfd;lkgjs;lkdfjmdsnjks;aid;soaidfjslkcjlksdj;lkfjs;dkfj;lskdjcl;kvjd;lkfjs;lkjfksdj;lkfcjslkdjf;gsduroiwuepufs;kldjfcksljfkljsdlkfjs;jdrf;oisuddksjdlkajesiouawioeuisjkda;ljsdfklasjclvaj;ksfiaurufiuadihjaschljasdkfhajksdhfjlafdsgdsrytdsfdf;lsjdrlteosiru;lsjdfjalksjdkfajeiuioruaoiweruoiajwdlkfjalkdjklfajsdkljfaslkdjfklasjeiowuroirutieudhsjkchklnvjsdfherutpiuroiuwiodjfasdvmnxczkjvsuiosureouiosafjsdfajsdckjsdiufeusfaoieuasioudjcaskdiuorpewiuoeijfldkjfslkdvmc,vlakmsdlkfasjeiourwaoiueoruawoieurasdcjxmvieejsdkjfklsdjlkfasjdlkfjalksdj;lkajf;ldkjalf;ksdjl;kafjsd;lkjfalksdjlakjsdlkfjalksdjlkajsdkdjlfksjdlkajsl;dkjlafksdjlkajlk;sdjfalksdjlk;ajs;ldkjfal;ksdjf;lksjfd;lksdjfkajsdflkajsdflkjas;lkdjf;lakjf;ldkjflkjdslkfja;lkdj;lakjf;ldkja;lkjdf;lkajf;klsdjf;kaj;ldkjl;akjdl;kaj;lkdjf;lkaj;dlkjaf;lksdjf;alkjd;lkfja;lkdjf;alkjfd;lkajf;ladskjf;laksdfj;lkdfjsl;akdfj;laksjdklajflkdjflk;asjdlkajf;lkdsjf;lakjsd;lfkaj;lkdjf;aklsdjf;lakfj;laskdjfaklsjf;lksadjf;laskfjl;skdfjas;klfjas;klfj;aslkfj;asklfj;aslkfj;lskfj;aslkfj;slkfj;slkfjl;skdfjslakdfj;lskadjf;lksajfl;skfjs;lkdfj;lksadjflkasdjf;laksjf;lkasdjf;lsakdjfa;lllllllllllljhlgkhgfkjhgkjghgkhjglllllllllllllllllllllllll;;;;;;;kkfjaskldjf;alskjdf;lkaskjffksjf;akl"
-		}
-	}
-    render() {
-      return(
-        <View style={{flex:1}}>
+export default class AboutScreen extends Component {
 
-          <View style={styles.topbar}>
-
-            <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-              <TouchableOpacity>
-                <Icon name="arrow-left"  size={25} style={{color:'green'}} />
-              </TouchableOpacity>
-            </View>
-
-            <View style={{flex:7,alignItems:'flex-end',justifyContent:'center',paddingEnd:25}}>
-              <Text style={{fontFamily:'Arial',fontSize: 25,color:'green'}}>
-                About us
+  render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.header}>
+              <Text style={styles.headerTitle}>
+               About
               </Text>
-            </View>
-            
-		      </View>
+          </View>
 
-          <ScrollView>
-		        <View>
+          <View style={styles.postContent}>
+              <Text style={styles.postTitle}>
+                App Info
+              </Text>
 
-			        <Text style={styles.text}>
-				        { this.state.About_us }
-			        </Text>
+              <Text style={styles.postDescription}>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
+                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
+              </Text>
 
-		        </View>
-	        </ScrollView>
-                        
-          <TouchableOpacity style={styles.write}>
-            <Icon name="pencil" size={25} color={'white'} />
-          </TouchableOpacity>
+              {/* <Text style={styles.tags}>
+                Lorem, ipsum, dolor, sit, amet, consectetuer, adipiscing, elit. 
+              </Text>
 
+              <Text style={styles.date}>
+                2017-11-27 13:03:01
+              </Text> */}
+{/* 
+              <View style={styles.profile}>
+                <Image style={styles.avatar}
+                  source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
+
+                <Text style={styles.name}>
+                    
+                </Text>
+              </View>
+              <TouchableOpacity style={styles.shareButton}>
+                <Text style={styles.shareButtonText}>Like</Text>  
+              </TouchableOpacity>  */}
+          </View>
         </View>
-      )
-    }  
+      </ScrollView>
+    );
+  }
 }
 
-const styles=StyleSheet.create({
-	topbar: {
+const styles = StyleSheet.create({
+  container:{
     flex:1,
-    flexDirection: 'row',
-    height: 100,
-		backgroundColor: 'lightgreen',
-		//borderBottomLeftRadius: 6,
-		//borderBottomRightRadius: 6
-	},
-	text: {
-    backgroundColor: 'white',
-		color: '#463883',
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: 25,
-    fontFamily: 'Arial'
-	},
-  write: {
-    position: "absolute",
-    height:60,
-    width:60,
-    backgroundColor:'grey',
-    borderRadius:40,
-    alignItems:'center',
-    justifyContent:'center',
-    right:'8%',
-    bottom:40,
-    //zIndex:1,
-    //flexDirection: 'row',
   },
-})
+  header:{
+    padding:30,
+    alignItems: 'center',
+    backgroundColor: "tomato",
+  },
+  headerTitle:{
+    textAlign:'left',
+    fontSize:20,
+    color:"#FFFFFF",
+    marginTop:10,
+    fontWeight:'bold'
+  },
+  name:{
+    fontSize:22,
+    color:"#FFFFFF",
+    fontWeight:'600',
+  },
+  postContent: {
+    flex: 1,
+    padding:30,
+  },
+  postTitle:{
+    fontSize:26,
+    fontWeight:'600',
+  },
+  postDescription:{
+    fontSize:16,
+    marginTop:10,
+  },
+  tags:{
+    color: '#00BFFF',
+    marginTop:10,
+  },
+  date:{
+    color: '#696969',
+    marginTop:10,
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 35,
+    borderWidth: 4,
+    borderColor: "#00BFFF",
+  },
+  profile:{
+    flexDirection: 'row',
+    marginTop:20
+  },
+  name:{
+    fontSize:22,
+    color:"#00BFFF",
+    fontWeight:'600',
+    alignSelf:'center',
+    marginLeft:10
+  }, 
+  shareButton: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius:30,
+    backgroundColor: "#00BFFF",
+  },
+  shareButtonText:{
+    color: "#FFFFFF",
+    fontSize:20,
+  }
+});
+  

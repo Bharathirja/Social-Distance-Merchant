@@ -1,8 +1,5 @@
 
 import { createStackNavigator } from '@react-navigation/stack';
-
-const Stack = createStackNavigator();
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -11,6 +8,9 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+
+
+const Stack = createStackNavigator();
 
  export default function ProfileScreen () {
 
@@ -22,15 +22,21 @@ import {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Merchant Name</Text>
-              <Text style={styles.info}>ID :3434343434</Text>
-              <Text style={styles.description}></Text>
+              {/* <Text style={styles.info}>ID :3434343434</Text> */}
+              <Text style={styles.description}>xxxxyyyyzzz@gmail.com</Text>
+
               
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>+913434343434</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>example@gmail.com</Text> 
+                <Text>Phone Number:+913434343434</Text>  
               </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>Address:Chennai</Text>  
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>GST Number:345454545</Text>  
+              </TouchableOpacity>
+                           
+              
             </View>
         </View>
       </View>
