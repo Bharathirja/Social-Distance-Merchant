@@ -1,75 +1,60 @@
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   Image,
-  Alert,
-  ScrollView,
+  TouchableOpacity,
   FlatList,
+  Dimensions,
+  Alert,
+  ScrollView
 } from 'react-native';
 
-export default class Users extends Component {
+export default class TabADetailsScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      modalVisible:false,
+      userSelected:[],
       data: [
-        {id:1, name: "Mark Doe",   time:"11:23 PM",               image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
-        {id:1, name: "John Doe",   time:"11:50 PM",               image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
-        {id:2, name: "Clark Man",  time:"11:50 PM", image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
-        {id:3, name: "Jaden Boor", time:"01:50 PM",     image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
-        {id:4, name: "Srick Tree", time:"02:50 PM",   image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-        {id:5, name: "John Doe",   time:"03:23 PM", image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
-        {id:6, name: "John Doe",   time:"04:40 PM",           image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
-        {id:8, name: "John Doe",   time:"05:40 PM",           image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
-        {id:9, name: "John Doe",   time:"02:20 AM",           image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-        {id:9, name: "John Doe",   time:"14:00 PM",           image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
+        {id:1,  name: "Customer 1",   image:"https://img.icons8.com/clouds/100/000000/groups.png",           time:'12:11 PM'},
+        {id:2,  name: "Customer 2",    image:"https://img.icons8.com/color/100/000000/real-estate.png",       time:'03:22 PM'},
+        {id:3,  name: "Customer 3",       image:"https://img.icons8.com/color/100/000000/find-matching-job.png", time:'04:23 PM'} ,
+        {id:4,  name: "Customer 4",   image:"https://img.icons8.com/clouds/100/000000/employee-card.png",    time:'04:33 PM'} ,
+        {id:5,  name: "Customer 5",   image:"https://img.icons8.com/color/100/000000/land-sales.png",        time:'04:58 PM'} ,
       ]
     };
   }
 
-  clickEventListener(item) {
-    Alert.alert(item.name)
+  clickEventListener = (item) => {
+    Alert.alert('Message', 'Item clicked. '+item.name);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <FlatList style={styles.list}
-          contentContainerStyle={styles.listContainer}
+        <FlatList 
+          style={styles.contentList}
+          columnWrapperStyle={styles.listContainer}
           data={this.state.data}
-          horizontal={false}
-          numColumns={2}
           keyExtractor= {(item) => {
             return item.id;
           }}
           renderItem={({item}) => {
-            return (
-              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
-                {/* <View style={styles.cardHeader}> */}
-                  {/* <Image style={styles.icon} source={{uri:"https://img.icons8.com/flat_round/64/000000/hearts.png"}}/> */}
-                {/* </View> */}
-                <Image style={styles.userImage} source={{uri:item.image}}/>
-                <View style={styles.cardFooter}>
-                  <View style={{alignItems:"center", justifyContent:"center"}}>
-                    <Text style={styles.name}>{item.name}</Text>
-                    <Text style={styles.time}>Time:{item.time}</Text>
-                    
-                    <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Allocate</Text>  
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.rejectButton} onPress={()=> this.clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Reject</Text>  
-                    </TouchableOpacity>
-
-                  </View>
-                </View>
-              </TouchableOpacity>
-            )
-          }}/>
+          return (
+            <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+              <Image style={styles.image} source={{uri: item.image}}/>
+              <View style={styles.cardContent}>
+                <Text style={styles.name}>{item.name}</Text>
+                <Text style={styles.time}>Time:{item.time}</Text>
+                <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                  <Text style={styles.followButtonText}>View more</Text>  
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+          )}}/>
       </View>
     );
   }
@@ -77,17 +62,25 @@ export default class Users extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    // flex:1,
-    marginTop:10,
+    flex:1,
+    // marginTop:20,
+    backgroundColor:"#ebf0f7"
   },
-  list: {
-    paddingHorizontal: 5,
-    backgroundColor:"#E6E6E6",
+  contentList:{
+    flex:1,
   },
-  listContainer:{
-   alignItems:'center'
+  cardContent: {
+    marginLeft:20,
+    marginTop:10
   },
-  /******** card **************/
+  image:{
+    width:90,
+    height:90,
+    borderRadius:45,
+    borderWidth:2,
+    borderColor:"#ebf0f7"
+  },
+
   card:{
     shadowColor: '#00000021',
     shadowOffset: {
@@ -98,42 +91,15 @@ const styles = StyleSheet.create({
     shadowRadius: 7.49,
     elevation: 12,
 
-    marginVertical: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:20,
     backgroundColor:"white",
-    flexBasis: '46%',
-    marginHorizontal: 5,
-    borderRadius:5
+    padding: 10,
+    flexDirection:'row',
+    borderRadius:30,
   },
-  cardFooter: {
-    paddingVertical: 17,
-    paddingHorizontal: 16,
-    borderTopLeftRadius: 1,
-    borderTopRightRadius: 1,
-    flexDirection: 'row',
-    alignItems:"center", 
-    justifyContent:"center"
-  },
-  cardContent: {
-    paddingVertical: 12.5,
-    paddingHorizontal: 16,
-  },
-  cardHeader:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 12.5,
-    paddingBottom: 25,
-    paddingHorizontal: 16,
-    borderBottomLeftRadius: 1,
-    borderBottomRightRadius: 1,
-  },
-  userImage:{
-    height: 120,
-    width: 120,
-    borderRadius:60,
-    alignSelf:'center',
-    borderColor:"#DCDCDC",
-    borderWidth:3,
-  },
+
   name:{
     fontSize:18,
     flex:1,
@@ -151,28 +117,17 @@ const styles = StyleSheet.create({
     marginTop:10,
     height:35,
     width:100,
+    padding:10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius:30,
-    backgroundColor: "#00BFFF",
-  },
-  rejectButton: {
-    marginTop:10,
-    height:35,
-    width:100,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:30,
-    backgroundColor: "tomato",
+    backgroundColor: "white",
+    borderWidth:1,
+    borderColor:"#dcdcdc",
   },
   followButtonText:{
-    color: "#FFFFFF",
-    fontSize:16,
+    color: "#dcdcdc",
+    fontSize:12,
   },
-  icon:{
-    height: 20,
-    width: 20, 
-  }
-});     
+});  

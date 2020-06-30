@@ -10,6 +10,8 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 const  data = [
@@ -47,17 +49,17 @@ function clickEventListener(item) {
                 {/* <View style={styles.cardHeader}> */}
                   {/* <Image style={styles.icon} source={{uri:"https://img.icons8.com/flat_round/64/000000/hearts.png"}}/> */}
                 {/* </View> */}
-                <Image style={styles.userImage} source={{uri:item.image}}/>
+                {/* <Image style={styles.userImage} source={{uri:item.image}}/> */}
                 <View style={styles.cardFooter}>
                   <View style={{alignItems:"center", justifyContent:"center"}}>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.time}>Time:{item.time}</Text>
                     
                     <TouchableOpacity style={styles.followButton} onPress={()=> clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Rellocate</Text>  
+                      <Text style={styles.followButtonText}>Accept</Text>  
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.rejectButton} onPress={()=> clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Cancel</Text>  
+                      <Text style={styles.followButtonText}>Reject</Text>  
                     </TouchableOpacity>
 
                   </View>
@@ -69,34 +71,69 @@ function clickEventListener(item) {
     );
 }
 
-    
+function PastDetails () {
+  
+  return (
+    <View style={styles.container}>
+      <FlatList style={styles.list}
+        contentContainerStyle={styles.listContainer}
+        data={data}
+        horizontal={false}
+        numColumns={2}
+        keyExtractor= {(item) => {
+          return item.id;
+        }}
+        renderItem={({item}) => {
+          return (
+            <TouchableOpacity style={styles.card} onPress={() => {clickEventListener(item)}}>
+              {/* <View style={styles.cardHeader}> */}
+                {/* <Image style={styles.icon} source={{uri:"https://img.icons8.com/flat_round/64/000000/hearts.png"}}/> */}
+              {/* </View> */}
+              {/* <Image style={styles.userImage} source={{uri:item.image}}/> */}
+              <View style={styles.cardFooter}>
+                <View style={{alignItems:"center", justifyContent:"center"}}>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.time}>Time:{item.time}</Text>
+                  
+                  <TouchableOpacity style={styles.followButton} onPress={()=> clickEventListener(item)}>
+                    <Text style={styles.followButtonText}>Rellocate</Text>  
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.rejectButton} onPress={()=> clickEventListener(item)}>
+                    <Text style={styles.followButtonText}>Cancel</Text>  
+                  </TouchableOpacity>
 
+                </View>
+              </View>
+            </TouchableOpacity>
+          )
+        }}/>
+    </View>
+  );
+}
 
 const Stack = createStackNavigator();
+const Tab = createMaterialTopTabNavigator();
 
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
 export default function AllocatedScreen() {
-    return (
-      <Stack.Navigator>
-        <Stack.Screen name="Allocated" component={AllocatedDetails}  options={{
-        headerStyle: {
-          backgroundColor: 'tomato',
-          
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }}}/>
-        {/* <Stack.Screen name="Details" component={Details} /> */}
-      </Stack.Navigator>
-    );
-  }
+  return (
+    <Tab.Navigator  tabBarOptions={{
+      labelStyle: { fontSize: 14,fontWeight:'bold',color:'white' },
+      tabStyle: { width: 170 },
+      style: { backgroundColor: 'tomato',paddingTop:30 },
+    }}>
+      <Tab.Screen name="Active" component={AllocatedDetails} />
+      <Tab.Screen name="Past" component={PastDetails} />
+    </Tab.Navigator>
+  );
+}
 
+  // All Styles
   const styles = StyleSheet.create({
+
     container:{
-      // flex:1,
-      marginTop:10,
     },
     list: {
       paddingHorizontal: 5,
@@ -145,8 +182,8 @@ export default function AllocatedScreen() {
       borderBottomRightRadius: 1,
     },
     userImage:{
-      height: 120,
-      width: 120,
+      height: 100,
+      width: 100,
       borderRadius:60,
       alignSelf:'center',
       borderColor:"#DCDCDC",

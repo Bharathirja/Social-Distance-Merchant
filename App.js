@@ -32,10 +32,15 @@ export default function App() {
         ? 'ios-contact'
         : 'ios-contact';
       }
-      else if (route.name === 'Allocated') {
+      else if (route.name === 'Bookings') {
         iconName = focused
         ? 'ios-timer'
         : 'ios-timer';
+      }
+      else if (route.name === 'About') {
+        iconName = focused
+        ? 'ios-information-circle-outline'
+        : 'ios-information-circle-outline';
       }
       return <Ionicons name={iconName} size={size} color={color}     />;
         },
@@ -46,8 +51,10 @@ export default function App() {
       }}
     >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Allocated" component={AllocatedScreen} />
+        <Tab.Screen name="Bookings" component={AllocatedScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="About" component={ProfileScreen} />
+
     </Tab.Navigator>
     </NavigationContainer>
   );
