@@ -15,16 +15,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const  data = [
-  {id:1, name: "Mark Doe",   time:"11:23 PM",               image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
-  {id:1, name: "John Doe",   time:"11:50 PM",               image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
-  {id:2, name: "Clark Man",  time:"11:50 PM", image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
-  {id:3, name: "Jaden Boor", time:"01:50 PM",     image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
-  {id:4, name: "Srick Tree", time:"02:50 PM",   image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-  {id:5, name: "John Doe",   time:"03:23 PM", image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
-  {id:6, name: "John Doe",   time:"04:40 PM",           image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
-  {id:8, name: "John Doe",   time:"05:40 PM",           image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
-  {id:9, name: "John Doe",   time:"02:20 AM",           image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-  {id:9, name: "John Doe",   time:"14:00 PM",           image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
+  {id:1, name: "Mark Doe",   time:"11:23 PM", date:'20-07-2020',              image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
+  {id:1, name: "John Doe",   time:"11:50 PM", date:'20-07-2020',              image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
+  {id:2, name: "Clark Man",  time:"11:50 PM", date:'20-07-2020',image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
+  {id:3, name: "Jaden Boor", time:"01:50 PM", date:'20-07-2020',    image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
+  {id:4, name: "Srick Tree", time:"02:50 PM", date:'20-07-2020',  image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
+  {id:5, name: "John Doe",   time:"03:23 PM", date:'20-07-2020',image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
+  {id:6, name: "John Doe",   time:"04:40 PM", date:'20-07-2020',          image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
+  {id:8, name: "John Doe",   time:"05:40 PM",  date:'20-07-2020',         image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
+  {id:9, name: "John Doe",   time:"02:20 AM",  date:'20-07-2020',         image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
+  {id:9, name: "John Doe",   time:"14:00 PM",  date:'20-07-2020',         image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
 ]
 
 function clickEventListener(item) {
@@ -54,6 +54,8 @@ function clickEventListener(item) {
                   <View style={{alignItems:"center", justifyContent:"center"}}>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.time}>Time:{item.time}</Text>
+                    <Text style={styles.time}>Date:{item.date}</Text>
+
                     
                     <TouchableOpacity style={styles.followButton} onPress={()=> clickEventListener(item)}>
                       <Text style={styles.followButtonText}>Accept</Text>  
@@ -94,6 +96,8 @@ function PastDetails () {
                 <View style={{alignItems:"center", justifyContent:"center"}}>
                   <Text style={styles.name}>{item.name}</Text>
                   <Text style={styles.time}>Time:{item.time}</Text>
+                  <Text style={styles.time}>Date:{item.date}</Text>
+
                   
                   <TouchableOpacity style={styles.followButton} onPress={()=> clickEventListener(item)}>
                     <Text style={styles.followButtonText}>Rellocate</Text>  
@@ -121,7 +125,7 @@ export default function AllocatedScreen() {
   return (
     <Tab.Navigator  tabBarOptions={{
       labelStyle: { fontSize: 14,fontWeight:'bold',color:'white' },
-      tabStyle: { width: 170 },
+      tabStyle: { width: 180 },
       style: { backgroundColor: 'tomato',paddingTop:30 },
     }}>
       <Tab.Screen name="Active" component={AllocatedDetails} />
