@@ -5,12 +5,30 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  TextInput
 } from 'react-native';
+
+// const  data = [{
+//   value: 'Banana',
+// }, {
+//   value: 'Mango',
+// }, {
+//   value: 'Pear',
+// }];
+
 
 export default class AboutScreen extends Component {
 
   render() {
+    let data = [{
+      value: 'Banana',
+    }, {
+      value: 'Mango',
+    }, {
+      value: 'Pear',
+    }];
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -31,25 +49,61 @@ export default class AboutScreen extends Component {
                 Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
               </Text>
 
-              {/* <Text style={styles.tags}>
-                Lorem, ipsum, dolor, sit, amet, consectetuer, adipiscing, elit. 
-              </Text>
+              <View style={{flex:1}}>
 
-              <Text style={styles.date}>
-                2017-11-27 13:03:01
-              </Text> */}
-{/* 
-              <View style={styles.profile}>
-                <Image style={styles.avatar}
-                  source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
 
-                <Text style={styles.name}>
-                    
-                </Text>
-              </View>
-              <TouchableOpacity style={styles.shareButton}>
-                <Text style={styles.shareButtonText}>Like</Text>  
-              </TouchableOpacity>  */}
+
+<ScrollView style={{paddingHorizontal:10}}>
+  {/* <View>
+
+    <Text style={styles.text}>
+      { this.state.About_us }
+    </Text>
+
+  </View> */}
+  
+  <View style={{height:1,backgroundColor:'grey',}}>
+  </View>
+
+  <View>
+
+    <View style={{alignItems:'center',paddingVertical:20}}>
+      <Text style={styles.txt}>
+        Report Issues
+      </Text>
+    </View>
+    
+    <Dropdown label='Enter Your Error:' data={data} style={styles.dd} />
+
+    <View style={{paddingTop:20}}>
+      <TextInput 
+        style={styles.textinput} 
+        underlineColorAndroid="transparent"
+        placeholder={"Description:"}
+        placeholderTextColor={"#9E9E9E"}
+        numberOfLines={10}
+        multiline={true}
+      >
+
+      </TextInput>
+    </View>
+
+    <View style={{alignItems:'center',justifyContent:'center',           
+    paddingTop:20}}>
+      <TouchableOpacity style={styles.submit}>
+        <Text style={{fontSize:20,color:'white'}}>
+          Submit
+        </Text>
+      </TouchableOpacity>
+    </View>
+
+  </View>
+
+</ScrollView>
+            
+
+</View>
+
           </View>
         </View>
       </ScrollView>
@@ -128,6 +182,50 @@ const styles = StyleSheet.create({
   shareButtonText:{
     color: "#FFFFFF",
     fontSize:20,
+  },
+  topbar: {
+    flex:1,
+    flexDirection: 'row',
+    height: 120,
+		backgroundColor: 'lightgreen',
+		//borderBottomLeftRadius: 6,
+		//borderBottomRightRadius: 6
+	},
+	text: {
+    backgroundColor: 'white',
+		color: 'grey',
+    fontSize: 25,
+    // fontFamily: 'Times',
+    paddingBottom:20
+	},
+  txt: {
+    // fontFamily:'Arial',
+    fontWeight:'bold',
+    fontSize:20,
+    color:'#239484'
+  },
+  dd:{
+  },
+  textinput:{
+    paddingHorizontal:2,
+    textAlign: 'center',
+    borderWidth: 2,
+    borderColor: '#9E9E9E',
+    borderRadius: 20,
+    height: 150,
+    fontSize:20,
+    // fontFamily:'Times'
+  },
+  submit:{
+    height:30,
+    width:90,
+    backgroundColor:'#239484',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:8,
   }
 });
   
+
+import { Dropdown } from 'react-native-material-dropdown';
+
