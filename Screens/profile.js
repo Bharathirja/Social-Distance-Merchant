@@ -27,10 +27,10 @@ const Stack = createStackNavigator();
 
               
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Phone Number:+913434343434</Text>  
+                <Text>+913434343434</Text>  
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Address:Chennai</Text>  
+                <Text>Chennai</Text>  
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer}>
                 <Text>GST Number:345454545</Text>  
